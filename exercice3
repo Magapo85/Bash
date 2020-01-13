@@ -1,0 +1,45 @@
+#!/bin/bash
+
+function saisirUser {
+	echo "Saisir l'utilisateur"
+	read -r util
+}
+
+function verifyUser {
+	if grep "^$util:" /etc/passwd > /dev/null; then
+		echo "L'utilisateur existe"
+	else
+		echo "L'utilisateur n'existe pas"
+	fi
+}
+
+function knowID {
+	id "$util"
+}
+
+quitter=0
+
+while ((quitter!=1))
+do
+	echo "1 - Vérifier l'existence d'un utilisateur"
+	echo "2 - Connaître l'UID d'un utilisateur"
+	echo "q - Quitter"
+	
+	read reponse
+	
+	if [ "$reponse" = "q" ];
+	then
+		echo "Quitter"
+		quitter=1
+	elif [ "$reponse" -eq 1 ];
+	then
+		saisirUser
+		verifyUser
+	elif [ "$reponse" -eq 2 ];
+	then
+		saisirUser
+		knowID
+	else
+		echo "Saisie erronée"
+	fi
+done

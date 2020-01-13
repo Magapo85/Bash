@@ -1,0 +1,33 @@
+#!/bin/bash
+
+appreciation()
+{	
+	if [ $1 ]; then
+		note="$1"
+	else
+		echo "Saisissez note"
+		read -r note
+	fi
+	
+	if [ "$note" -ge 0 -a "$note" -le 20 ];
+	then
+		if [ "$note" -ge 16 -a "$note" -le 20 ];
+		then 
+			echo "Très bien"
+		elif [ "$note" -ge 14 ];
+		then
+			echo "Bien"
+		elif [ "$note" -ge 12 ];
+		then
+			echo "Assez Bien"
+		elif [ "$note" -ge 10 ];
+		then
+			echo "Moyen"
+		else
+			echo "Insuffisant"
+		fi
+	else
+		echo "Note erronée"
+	fi 
+}
+appreciation $1
