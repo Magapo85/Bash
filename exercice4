@@ -1,0 +1,24 @@
+#!/bin/bash
+
+compteurFichier()
+{
+
+
+	if [ $1 ]; then
+		rep="$1"
+	else
+		echo "Veuillez saisir le chemin d'un répertoire"
+		read -r rep
+	fi
+	cd $rep
+	for i int *; do
+		if [ -d "$i" ]; then
+			echo "$i"
+			let j=$j+1
+		fi
+		if [ -f "$i ]; then
+			echo "
+	echo "Nombre de fichiers dans le répertoire $1 :"
+	echo find $1 -name \* | wc -l
+}
+compteurFichier $1
